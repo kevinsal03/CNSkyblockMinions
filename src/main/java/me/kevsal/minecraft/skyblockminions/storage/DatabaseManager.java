@@ -11,7 +11,7 @@ import java.sql.*;
 public class DatabaseManager {
 
     @Getter
-    private static Connection database;
+    private static Connection database; // The H2 database
 
     // DatabaseManager specific logger
     private static final Logger logger = LoggerFactory.getLogger("CNSkyblockMinions - DatabaseManager");
@@ -22,8 +22,8 @@ public class DatabaseManager {
      */
     public static void loadDBDrivers() {
         try {
-            Class.forName("org.h2.Driver");
-            Class.forName("me.kevsal.minecraft.skyblockminions.lib.h2.Driver");
+            Class.forName("org.h2.Driver"); // Not shaded + relocated
+            Class.forName("me.kevsal.minecraft.skyblockminions.lib.h2.Driver"); // Shaded + relocated
         } catch (ClassNotFoundException ignored) {}
     }
 
@@ -41,7 +41,7 @@ public class DatabaseManager {
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            logger.error("Severe Error! Could not initialize to database!");
+            logger.error("Fatal Error! Could not initialize to database!");
             return false;
         }
     }
@@ -55,7 +55,7 @@ public class DatabaseManager {
             logger.info("Database closed.");
         } catch (SQLException e) {
             e.printStackTrace();
-            logger.error("Severe Error! Could not close database, corruption could occur.");
+            logger.error("Fatal Error! Could not close database, corruption could occur.");
         }
     }
 

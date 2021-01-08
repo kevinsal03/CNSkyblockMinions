@@ -47,6 +47,14 @@
                                     <pattern>parsii</pattern>
                                     <shadedPattern>me.kevsal.minecraft.skyblockminions.lib.parsii</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>org.inventivetalent.reflection</pattern>
+                                    <shadedPattern>me.kevsal.minecraft.skyblockminions.lib.reflection</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.inventivetalent.pluginannotations</pattern>
+                                    <shadedPattern>me.kevsal.minecraft.skyblockminions.lib.pluginannotations</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
@@ -67,6 +75,10 @@
         <repository>
             <id>CodeMC</id>
             <url>https://repo.codemc.org/repository/maven-public</url>
+        </repository>
+        <repository>
+            <id>inventive-repo</id>
+            <url>https://repo.inventivetalent.org/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -111,11 +123,17 @@
             <version>1.18.16</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Config API from Terra -->
+        <!-- Annotation based configuration -->
         <dependency>
-            <groupId>com.dfsek</groupId>
-            <artifactId>Tectonic</artifactId>
-            <version>1.1.0</version>
+            <groupId>org.inventivetalent</groupId>
+            <artifactId>pluginannotations</artifactId>
+            <version>1.4.7-SNAPSHOT</version>
+        </dependency>
+        <!-- Make reflection easier -->
+        <dependency>
+            <groupId>org.inventivetalent</groupId>
+            <artifactId>reflectionhelper</artifactId>
+            <version>1.15.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

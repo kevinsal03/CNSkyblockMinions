@@ -22,6 +22,7 @@ public class SkyblockMinions extends JavaPlugin {
         // Enable metrics
         Metrics metrics = new Metrics(this, BSTATS_METRICS_PLUGIN_ID);
 
+        // Init the database, disable plugin if failed.
         if (!DatabaseManager.initDatabase()) {
             getSLF4JLogger().error("Plugin disabled due to database initialization error!");
             this.setEnabled(false);
