@@ -1,0 +1,7 @@
+name: CNSkyblockMinions
+main: me.kevsal.minecraft.skyblockminions.SkyBlockMinions
+version: ${project.version}
+author: Kevinsal03
+description: Adds Hypixel-style Minions to CN's Skyblock server
+api-version: 1.14 # Paper API
+depend: [Vault]
