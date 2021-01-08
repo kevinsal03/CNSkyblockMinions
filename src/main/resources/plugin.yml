@@ -1,5 +1,5 @@
 name: CNSkyblockMinions
-main: me.kevsal.minecraft.skyblockminions.SkyBlockMinions
+main: me.kevsal.minecraft.skyblockminions.SkyblockMinions
 version: ${project.version}
 author: Kevinsal03
 description: Adds Hypixel-style Minions to CN's Skyblock server
