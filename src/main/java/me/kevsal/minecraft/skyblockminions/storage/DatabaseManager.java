@@ -67,6 +67,7 @@ public class DatabaseManager {
     private static void initializeMinionEntityTable() throws SQLException {
         database.prepareStatement(StaticSQLStatements.MINION_ENTITY_DATABASE_CREATION_STMT).execute();
         database.prepareStatement(StaticSQLStatements.MINION_CREATE_TEST_STMT).execute(); // Seed test data, TODO: Remove before release
+        database.prepareStatement(StaticSQLStatements.MINION_CREATE_TEST_STMT2).execute(); // Seed test data, TODO: Remove before release
         logger.info("MINION_ENTITY table initialized.");
     }
 }
