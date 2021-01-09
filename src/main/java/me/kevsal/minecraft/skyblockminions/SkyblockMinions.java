@@ -3,7 +3,8 @@ package me.kevsal.minecraft.skyblockminions;
 import lombok.Getter;
 import lombok.Setter;
 import me.kevsal.minecraft.skyblockminions.config.ConfigManager;
-import me.kevsal.minecraft.skyblockminions.config.Configuration;
+import me.kevsal.minecraft.skyblockminions.config.LangConfiguration;
+import me.kevsal.minecraft.skyblockminions.config.MainConfiguration;
 import me.kevsal.minecraft.skyblockminions.storage.DatabaseManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,9 +17,13 @@ public class SkyblockMinions extends JavaPlugin {
     private static final int BSTATS_METRICS_PLUGIN_ID = 9939;
 
     @Override
+    @SuppressWarnings("unused")
     public void onEnable() {
         // Set instance of plugin when loaded by server
         instance = this;
+
+        // Load Configurations
+        ConfigManager.loadConfigs();
 
         // Enable metrics
         Metrics metrics = new Metrics(this, BSTATS_METRICS_PLUGIN_ID);
@@ -30,7 +35,6 @@ public class SkyblockMinions extends JavaPlugin {
         }
 
         getSLF4JLogger().info("Plugin enabled.");
-
     }
 
     @Override
@@ -42,4 +46,14 @@ public class SkyblockMinions extends JavaPlugin {
 
         getSLF4JLogger().info("Plugin disabled.");
     }
+
+    /**
+     * Plugin's main config
+     */
+    @Getter @Setter private MainConfiguration mainConfiguration;
+
+    /**
+     * Plugin's language config
+     */
+    @Getter @Setter private LangConfiguration langConfiguration;
 }

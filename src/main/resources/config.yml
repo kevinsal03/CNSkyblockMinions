@@ -1,0 +1,10 @@
+# Main Configuration file
+# Worlds the plugin is allowed to operate in
+allowed-worlds:
+  - bskyblock_world
+  - bskyblock_world_nether
+  - bskyblock_world_the_end
+
+# DO NOT CHANGE THIS SECTION!
+meta:
+  config-version: 0
