@@ -1,14 +1,16 @@
 package me.kevsal.minecraft.skyblockminions;
 
 import lombok.Getter;
+import lombok.Setter;
+import me.kevsal.minecraft.skyblockminions.config.ConfigManager;
+import me.kevsal.minecraft.skyblockminions.config.Configuration;
 import me.kevsal.minecraft.skyblockminions.storage.DatabaseManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SkyblockMinions extends JavaPlugin {
 
-    @Getter
-    private static SkyblockMinions instance;
+    @Getter private static SkyblockMinions instance;
 
     // Metrics plugin ID
     private static final int BSTATS_METRICS_PLUGIN_ID = 9939;
@@ -17,7 +19,6 @@ public class SkyblockMinions extends JavaPlugin {
     public void onEnable() {
         // Set instance of plugin when loaded by server
         instance = this;
-
 
         // Enable metrics
         Metrics metrics = new Metrics(this, BSTATS_METRICS_PLUGIN_ID);

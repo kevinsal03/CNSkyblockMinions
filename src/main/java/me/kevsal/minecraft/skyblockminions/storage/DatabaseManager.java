@@ -10,8 +10,7 @@ import java.sql.*;
 
 public class DatabaseManager {
 
-    @Getter
-    private static Connection database; // The H2 database
+    @Getter private static Connection database; // The H2 database
 
     // DatabaseManager specific logger
     private static final Logger logger = LoggerFactory.getLogger("CNSkyblockMinions - DatabaseManager");
