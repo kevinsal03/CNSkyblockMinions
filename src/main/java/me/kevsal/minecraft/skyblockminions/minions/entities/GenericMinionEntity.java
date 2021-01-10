@@ -10,7 +10,7 @@ public class GenericMinionEntity extends AbstractMinionEntity {
     }
 
     @Override
-    void performVisualAction() {
+    public void performVisualAction() {
         // Do nothing right now
     }
 

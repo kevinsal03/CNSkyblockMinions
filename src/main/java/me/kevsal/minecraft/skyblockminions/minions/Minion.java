@@ -3,9 +3,10 @@ package me.kevsal.minecraft.skyblockminions.minions;
 import me.kevsal.minecraft.skyblockminions.minions.virtual.AbstractVirtualMinion;
 import org.bukkit.OfflinePlayer;
 
+import java.sql.ResultSet;
 import java.util.UUID;
 
-public interface AbstractMinion {
+public interface Minion {
 
     /**
      * Get the Minion ID
@@ -13,6 +14,10 @@ public interface AbstractMinion {
      */
     int getMinionID();
 
+    /**
+     * The owner of this minion
+     * @return org.bukkit.OfflinePlayer grabbed from the OwnerUUID in the database
+     */
     OfflinePlayer getOwner();
 
     /**
@@ -20,6 +25,12 @@ public interface AbstractMinion {
      * @return enum MinionType type
      */
     MinionType getType();
+
+    /**
+     * Grabs the database entry that the current Minion represents
+     * @return a SQL ResultSet containing SQL version of this Minion.
+     */
+    ResultSet getDatabaseMinion();
 
     /**
      * The AbstractVirtualMinion instance of this minion

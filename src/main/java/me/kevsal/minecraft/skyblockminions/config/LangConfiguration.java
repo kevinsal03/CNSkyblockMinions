@@ -42,4 +42,7 @@ public class LangConfiguration implements Configuration {
      * Access Denied Message
      */
     @Getter @MessageValue(path = "message.no-access", defaultsTo = "&cAccess Denied") private String accessDeniedMessage;
+
+    @Getter @MessageValue(path = "message.close", defaultsTo = "&4&lClose") private String closeMessage;
+
 }

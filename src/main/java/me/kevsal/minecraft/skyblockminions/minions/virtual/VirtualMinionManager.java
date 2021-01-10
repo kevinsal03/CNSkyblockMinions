@@ -22,6 +22,7 @@ public class VirtualMinionManager {
     @Getter public static HashMap<Integer, AbstractVirtualMinion> virtualMinions = new HashMap<>();
 
     public static void buildVirtualMinionsFromDB() {
+        HashMap<Integer, AbstractVirtualMinion> newVirtualMinions = new HashMap<>();
         ResultSet queryResult;
         int resultSize;
         try {
@@ -44,8 +45,8 @@ public class VirtualMinionManager {
                     Location minionLocation = new Location(world, coordinates[0], coordinates[1], coordinates[2]);
                     // 7 is chunk location -> not used in this instance
                     // 8 is unused for now
-                    Inventory inv = InventoryConverter.jsonToInventory(queryResult.getString(10));
-                    HashMap<String, ?> options = new HashMap<>(); // from 11 queryResult.getObject(11); TODO: Make this work
+                    //Inventory inv = InventoryConverter.jsonToInventory(queryResult.getString(10));
+                    //HashMap<String, ?> options = new HashMap<>(); // from 11 queryResult.getObject(11); TODO: Make this work
                     Timestamp lastUpdated = queryResult.getTimestamp(12);
 
                     // Create the actual minion
@@ -54,7 +55,7 @@ public class VirtualMinionManager {
                         // Case for each valid type
                         // TODO: Implement each case for each type
                         case GENERIC:
-                            minion = new GenericVirtualMinion(minionID, ownerUUID, minionName, type, spawned, minionLocation, inv, options, lastUpdated);
+                            minion = new GenericVirtualMinion(minionID, ownerUUID, minionName, type, spawned, minionLocation, lastUpdated);
                             break;
                         case COBBLESTONE:
                             throw new UnsupportedOperationException("Not yet implemented");
@@ -64,9 +65,11 @@ public class VirtualMinionManager {
 
                     // By now, the minion object contains a valid VirtualMinion.
                     // It was built using data grabbed from the DB and parsed very terribly but it works
-                    getVirtualMinions().put(minionID, minion); // It is injected into the HashMap with the ID as its key
+                    newVirtualMinions.put(minionID, minion); // It is injected into the HashMap with the ID as its key
                 }
             }
+            // replace the old HashMap with the new HasMap
+            virtualMinions = newVirtualMinions;
         } catch (SQLException exception) {
             exception.printStackTrace(); // bruh if this happens somethings very broken
         }
